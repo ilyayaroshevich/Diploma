@@ -91,4 +91,4 @@ class MathOperations {
     }
 }
 
-module.exports = MathOperations;
+export default MathOperations;
