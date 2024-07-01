@@ -4,12 +4,15 @@
     "description": "Diploma_TMS",
     "main": "index.js",
     "scripts": {
-        "test": "jest --config='unit_tests\\jest.config.js'"
+        "unit_tests": "jest --config='unit_tests\\jest.config.js'",
+        "int_tests": "jest --config='integration_tests\\jest.config.js'"
     },
     "author": "Ilya_Yarashevich",
     "license": "ISC",
     "dependencies": {
-        "jest": "^29.7.0"
+        "@types/superagent": "^8.1.7",
+        "jest": "^29.7.0",
+        "superagent": "^9.0.2"
     },
     "devDependencies": {
         "@types/jest": "^29.5.12",
