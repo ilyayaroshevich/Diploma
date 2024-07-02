@@ -1,11 +1,11 @@
-import * as superagent from 'superagent'
+import * as superagent from 'superagent';
 
 export async function getRequest(url: string): Promise<any> {
   try {
-    const response = await superagent.get(url)
-    return response
+    const response = await superagent.get(url);
+    return response;
   } catch (error: any) {
-    return error
+    return error;
   }
 }
 
@@ -17,10 +17,10 @@ export async function postRequest(
     const response: any = await superagent
       .post(url)
       .set('Content-Type', 'application/json')
-      .send(sentObject)
-    return response
+      .send(sentObject);
+    return response;
   } catch (error: any) {
-    return error
+    return error;
   }
 }
 
@@ -29,10 +29,10 @@ export async function putRequest(
   postForUpdating: { id?: any; title?: any; body?: any; userId?: any },
 ): Promise<any> {
   try {
-    const response: any = await superagent.put(url).send(postForUpdating)
-    return response
+    const response: any = await superagent.put(url).send(postForUpdating);
+    return response;
   } catch (error: any) {
-    return error
+    return error;
   }
 }
 
@@ -41,18 +41,18 @@ export async function patchRequest(
   postForPatching: { id?: any; title?: any; body?: any; userId?: any },
 ): Promise<any> {
   try {
-    const response: any = await superagent.patch(url).send(postForPatching)
-    return response
+    const response: any = await superagent.patch(url).send(postForPatching);
+    return response;
   } catch (error: any) {
-    return error
+    return error;
   }
 }
 
 export async function deleteRequest(url: string): Promise<any> {
   try {
-    const response: any = await superagent.delete(url)
-    return response
+    const response: any = await superagent.delete(url);
+    return response;
   } catch (error: any) {
-    return error
+    return error;
   }
 }
