@@ -7,6 +7,7 @@ class HeaderPage extends BasePage {
   profile: any
   allActionsButton: any
   goodCatalogButton: any;
+  searchField: any;
   constructor() {
     super()
     this.accountButton = $("[class='styles_userToolsToggler__c2aHe']")
@@ -14,6 +15,7 @@ class HeaderPage extends BasePage {
     this.profile = $("[class^='styles_list__X7MxD']")
     this.allActionsButton = $("[href$='promo.html'][data-index]")
     this.goodCatalogButton = $("[class='styles_catalogButton__z9L_j']")
+    this.searchField = $("[id='catalogSearch']")
   }
 
   public open() {

@@ -1,4 +1,4 @@
-import { Given, When, Then } from '@wdio/cucumber-framework'
+import { Given, When, Then , BeforeAll, AfterAll} from '@wdio/cucumber-framework'
 import { expect, $ } from '@wdio/globals'
 
 import MainPage from '../pageobjects/main.page.js'
@@ -8,6 +8,7 @@ import CookiesPage from '../pageobjects/cookies.page.js'
 import PromoPage from '../pageobjects/promo.page.js'
 import BasePage from '../pageobjects/base.page.js'
 import ElectronicsPage from '../pageobjects/electronics.page.js'
+import SearchPage from '../pageobjects/search.page.js'
 import {
   clickOnButton,
   elementIsDisplayed,
@@ -22,8 +23,13 @@ const pages = {
   header: HeaderPage,
   cookies: CookiesPage,
   promo: PromoPage,
-  electronics: ElectronicsPage
+  electronics: ElectronicsPage,
+  search: SearchPage
 }
+
+BeforeAll(async function () {
+  await basePage.maximizeWindow()
+})
 
 Given(/^I am on the (\w+) page$/, async (page) => {
   await pages[page].open()
@@ -45,7 +51,7 @@ Then(/^I should see (\w+) on the (\w+) page$/, async (elementName, pageName) => 
   await elementIsDisplayed(await element, true)
 })
 
-When(/^I enter incorrect (.+) and (.+)$/, async (email, password) => {
+When(/^I enter (.+) and (.+)$/, async (email, password) => {
   await setValue(LoginPage.emailfield, email)
   await setValue(LoginPage.passwordField, password)
 })
@@ -58,5 +64,24 @@ Then(/^I check that (.+) is correct$/, async (error) => {
 Then(/^I check that I am on the (\w+) page$/, async (pageName) => {
   const page = pages[pageName]
   const currentUrl = await page.getUrl()
-  expect(currentUrl).toEqual(page.url)
+  expect(currentUrl).toContain(page.url)
+})
+
+When(/^I enter (.+) in the search field$/, async (nameOfGood) => {
+  await setValue(HeaderPage.searchField, nameOfGood)
+})
+
+When(/^I press the Enter button$/, async () => {
+  await MainPage.searchResult.keys('Enter')
+})
+
+// Then(/^I should see (\w+) on the search page$/, async (goodName) => {
+//   const page = pages[pageName]
+//   const currentUrl = await page.getUrl()
+//   expect(currentUrl).toEqual(page.url)
+// })
+
+
+AfterAll(async function () {
+  await basePage.deleteSession()
 })
