@@ -1,4 +1,4 @@
-import { Given, When, Then , BeforeAll, AfterAll} from '@wdio/cucumber-framework'
+import { Given, When, Then , BeforeAll} from '@wdio/cucumber-framework'
 import { expect, $ } from '@wdio/globals'
 
 import MainPage from '../pageobjects/main.page.js'
@@ -27,9 +27,9 @@ const pages = {
   search: SearchPage
 }
 
-BeforeAll(async function () {
-  await basePage.maximizeWindow()
-})
+// BeforeAll(async function () {
+//   await basePage.maximizeWindow()
+// })
 
 Given(/^I am on the (\w+) page$/, async (page) => {
   await pages[page].open()

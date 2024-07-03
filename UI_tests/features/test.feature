@@ -1,5 +1,5 @@
 @all
-Feature: 21 century bewsite
+Feature: 21 century website
 Background:
   Given I am on the main page
   Given I accepte Cookies
