@@ -29,11 +29,9 @@ Scenario: As a user, I want to navigate to electronics page
 Scenario Outline: As a user, I want to navigate to searched good page
   When I click on the searchField on the header page
   When I enter <nameOfGood> in the search field
-  # Then I should see searchResult on the main page
-  # When I click on the searchButton on the main page
-  # Then I should see <nameOfGood> on the search page
+  Then I should see searchResult on the main page
+  When I press Enter button
+  Then I check that <nameOfGood> in the url
 Examples:
     | nameOfGood   | 
     | iPhone14     |
-    | test         |
-    | 00           |

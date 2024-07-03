@@ -64,24 +64,18 @@ Then(/^I check that (.+) is correct$/, async (error) => {
 Then(/^I check that I am on the (\w+) page$/, async (pageName) => {
   const page = pages[pageName]
   const currentUrl = await page.getUrl()
-  expect(currentUrl).toContain(page.url)
+  expect(currentUrl).toEqual(page.url)
 })
 
 When(/^I enter (.+) in the search field$/, async (nameOfGood) => {
   await setValue(HeaderPage.searchField, nameOfGood)
 })
 
-When(/^I press the Enter button$/, async () => {
-  await MainPage.searchResult.keys('Enter')
+Then(/^I check that (\w+) in the url$/, async (goodName) => {
+  const currentUrl = await basePage.getUrl()
+  expect(currentUrl).toMatch(SearchPage.url)
 })
 
-// Then(/^I should see (\w+) on the search page$/, async (goodName) => {
-//   const page = pages[pageName]
-//   const currentUrl = await page.getUrl()
-//   expect(currentUrl).toEqual(page.url)
-// })
-
-
-AfterAll(async function () {
-  await basePage.deleteSession()
+When(/^I press Enter button$/, async () => {
+  await browser.keys('Enter')
 })

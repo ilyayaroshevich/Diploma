@@ -14,7 +14,7 @@ class MainPage extends BasePage {
     this.goodCatalog = $("[class='styles_categoriesContainer__Nijol']")
     this.electronicsButton = $("a[href='/electronics/']")
     this.searchResult = $("[class='SearchResults_content__lRYQw']")
-    this.searchButton = $("[class='Search_searchBtn__Tk7Gw']")
+    this.searchButton = $("[type='button'][class='Search_searchBtn__Tk7Gw']")
   }
 
   public open() {
