@@ -1,41 +1,32 @@
 import { $ } from '@wdio/globals'
-import Page from './page.js';
+import BasePage from './base.page.ts'
 
-/**
- * sub page containing specific selectors and methods for a specific page
- */
-class LoginPage extends Page {
-    /**
-     * define selectors using getter methods
-     */
-    public get inputUsername () {
-        return $('#username');
-    }
+class LoginPage extends BasePage {
+  loginPopup: any
+  loginButton: any
+  emailfield: any
+  passwordField: any
+  errorMessage: any
+  constructor() {
+    super()
+    this.loginPopup = $("[data-testid='modal']")
+    this.loginButton = $("[data-testid='loginSubmit']")
+    this.emailfield = $("[data-testid='login-form-email']")
+    this.passwordField = $("[data-testid='login-form-password']")
+    this.errorMessage = $("[class$='__LEN7M']")
+  }
 
-    public get inputPassword () {
-        return $('#password');
-    }
+  public open() {
+    return browser.url(`https://www.21vek.by/`)
+  }
 
-    public get btnSubmit () {
-        return $('button[type="submit"]');
-    }
-
-    /**
-     * a method to encapsule automation code to interact with the page
-     * e.g. to login using username and password
-     */
-    public async login (username: string, password: string) {
-        await this.inputUsername.setValue(username);
-        await this.inputPassword.setValue(password);
-        await this.btnSubmit.click();
-    }
-
-    /**
-     * overwrite specific options to adapt it to page object
-     */
-    public open () {
-        return super.open('login');
-    }
+  public async waitForErrorMessage(expectedText: string): Promise<void> {
+    await browser.waitUntil(async () => {
+      const actual = await this.errorMessage.getText()
+      expect(actual).toContain(expectedText)
+      return true
+    })
+  }
 }
 
-export default new LoginPage();
+export default new LoginPage()
