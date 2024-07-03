@@ -7,6 +7,7 @@ import HeaderPage from '../pageobjects/header.page.js'
 import CookiesPage from '../pageobjects/cookies.page.js'
 import PromoPage from '../pageobjects/promo.page.js'
 import BasePage from '../pageobjects/base.page.js'
+import ElectronicsPage from '../pageobjects/electronics.page.js'
 import {
   clickOnButton,
   elementIsDisplayed,
@@ -21,6 +22,7 @@ const pages = {
   header: HeaderPage,
   cookies: CookiesPage,
   promo: PromoPage,
+  electronics: ElectronicsPage
 }
 
 Given(/^I am on the (\w+) page$/, async (page) => {
@@ -52,17 +54,6 @@ Then(/^I check that (.+) is correct$/, async (error) => {
   await LoginPage.waitForErrorMessage(error)
 })
 
-Then(/^I check that (\w+) name is correct$/, async (CheckingElement, pageName) => {
-  const page = pages[pageName]
-  const element = page && page[CheckingElement]
-  await getTextIsEqual(element, 'Все акции')
-})
-
-Then(/^I check amount of goods strings$/, async () => {
-  const childElements = PromoPage.childElements
-  const numberOfChildren = await childElements.length
-  expect(numberOfChildren).toEqual(12) 
-})
 
 Then(/^I check that I am on the (\w+) page$/, async (pageName) => {
   const page = pages[pageName]

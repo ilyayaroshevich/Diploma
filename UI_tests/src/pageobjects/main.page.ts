@@ -3,10 +3,14 @@ import BasePage from './base.page.ts'
 
 
 class MainPage extends BasePage {
-  url: any;
+  url: any
+  goodCatalog: any
+  electronicsButton:any
   constructor() {
     super()
-    this.url = 'https://www.21vek.by/';
+    this.url = 'https://www.21vek.by/'
+    this.goodCatalog = $("[class='styles_categoriesContainer__Nijol']")
+    this.electronicsButton = $("a[href='/electronics/']")
   }
 
   public open() {

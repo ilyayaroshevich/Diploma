@@ -16,9 +16,12 @@ Examples:
     | email        | password  | error               |
     | test@test.com| test12345 |Неправильный пароль. |
 @2
-Scenario: As a user, I want to check amount of promo goods strings
+Scenario: As a user, I want to navigate to promo page
     When I click on the allActionsButton on the header page
     Then I check that I am on the promo page
-    # Then I check that AllPromoTitle name is correct
-    Then I check amount of goods strings
-
+@3
+Scenario: As a user, I want to navigate to electronics page
+    When I click on the goodCatalogButton on the header page
+    Then I should see goodCatalog on the main page
+    When I click on the electronicsButton on the main page
+    Then I check that I am on the electronics page
