@@ -1,4 +1,4 @@
-import { Given, When, Then , BeforeAll} from '@wdio/cucumber-framework'
+import { Given, When, Then, BeforeAll } from '@wdio/cucumber-framework'
 import { expect, $ } from '@wdio/globals'
 
 import MainPage from '../pageobjects/main.page.js'
@@ -12,6 +12,7 @@ import SearchPage from '../pageobjects/search.page.js'
 import OrderPage from '../pageobjects/order.page.js'
 import SpecialoffersPage from '../pageobjects/specialOffers.page.js'
 import ContactsPage from '../pageobjects/contacts.page.js'
+import RecommendsPage from '../pageobjects/recommends.page.js'
 import {
   clickOnButton,
   elementIsDisplayed,
@@ -31,7 +32,8 @@ const pages = {
   search: SearchPage,
   order: OrderPage,
   specialoffers: SpecialoffersPage,
-  contacts: ContactsPage
+  contacts: ContactsPage,
+  recommends: RecommendsPage,
 }
 
 Given(/^I am on the (\w+) page$/, async (page) => {
@@ -63,7 +65,6 @@ Then(/^I check that (.+) is correct$/, async (error) => {
   await LoginPage.waitForErrorMessage(error)
 })
 
-
 Then(/^I check that I am on the (\w+) page$/, async (pageName) => {
   const page = pages[pageName]
   const currentUrl = await page.getUrl()
@@ -88,15 +89,19 @@ When(/^I click on the discounted goods button on the main page$/, async () => {
 })
 
 Then(/^And check that buySomethingButton has red color$/, async () => {
-  const colorOfBuySmthButton = await SpecialoffersPage.getCssPropertybuySomethingButton();
+  const colorOfBuySmthButton = await SpecialoffersPage.getCssPropertybuySomethingButton()
   expect(colorOfBuySmthButton.value).toMatch('rgba(234, 22, 83, 1)')
 })
 
 Then(/^And check that there is contact text$/, async () => {
-  await getTextIsEqual(ContactsPage.contactTitle,'Контакты')
+  await getTextIsEqual(ContactsPage.contactTitle, 'Контакты')
 })
 
 Then(/^And check that writeUsButton has blue color$/, async () => {
   const colorOfBuySmthButton = await ContactsPage.getCssPropertywriteUsButton()
   expect(colorOfBuySmthButton.value).toMatch('rgba(0, 114, 188, 1)')
+})
+
+Then(/^And check that there is recommends text$/, async () => {
+  await getTextIsEqual(RecommendsPage.recommends, 'Рекомендуемые товары')
 })

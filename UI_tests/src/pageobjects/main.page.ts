@@ -9,7 +9,8 @@ class MainPage extends BasePage {
   searchButton: any
   chipHomeWrapperSelector: any
   childChipHomeWrapperSelector: any
-  dicountedGoods:any
+  dicountedGoods: any
+  watchAllButton:any
   constructor() {
     super()
     this.url = 'https://www.21vek.by/'
@@ -22,6 +23,11 @@ class MainPage extends BasePage {
       (this.childChipHomeWrapperSelector =
         "header[class^='EntitiesList_header__wwu8B SpecialOffersList_entitylistHeader__MyjLn']>[class='ChipHome_wrapper__I0jqA']>[class='ChipHome_chipWrapper__B_Ess']")
     this.dicountedGoods = $("[class='CardPrice_oldPrice__dc0rb'][data-testid='card-old-price']")
+  this.watchAllButton = $(
+    "[href='/special_offers/recommend.html'][class='PopularsList_link__mJ5YM']",
+  )
+  
+  
   }
 
   public open() {

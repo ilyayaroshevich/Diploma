@@ -56,3 +56,8 @@ Scenario: As a user, I want navigate to the contact page
     Then I check that I am on the contacts page
     Then And check that there is contact text
     Then And check that writeUsButton has blue color
+@9
+Scenario: As a user, I want navigate to the recommends page
+    When I click on the watchAllButton on the main page
+    Then I check that I am on the recommends page
+    Then And check that there is recommends text
