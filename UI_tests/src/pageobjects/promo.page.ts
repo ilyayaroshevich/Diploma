@@ -4,7 +4,6 @@ import BasePage from './base.page.ts'
 class PromoPage extends BasePage {
   allPromoTitle: any
   url: any
-  allPromoText:any
   constructor() {
     super()
     this.allPromoTitle = $("[class^='style_title__c0jN1']")

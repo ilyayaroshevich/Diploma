@@ -35,3 +35,8 @@ Scenario Outline: As a user, I want to navigate to searched good page
 Examples:
     | nameOfGood   | 
     | iPhone14     |
+@5
+Scenario: As a user, I want to navigate to empty shopping cart
+  When I click on the shoppingCartButton on the header page
+  Then I check that I am on the order page
+  Then I should see emptyBasketScreen on the order page

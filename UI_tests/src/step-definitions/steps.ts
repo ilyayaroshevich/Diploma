@@ -9,6 +9,7 @@ import PromoPage from '../pageobjects/promo.page.js'
 import BasePage from '../pageobjects/base.page.js'
 import ElectronicsPage from '../pageobjects/electronics.page.js'
 import SearchPage from '../pageobjects/search.page.js'
+import OrderPage from '../pageobjects/order.page.js'
 import {
   clickOnButton,
   elementIsDisplayed,
@@ -24,7 +25,8 @@ const pages = {
   cookies: CookiesPage,
   promo: PromoPage,
   electronics: ElectronicsPage,
-  search: SearchPage
+  search: SearchPage,
+  order: OrderPage
 }
 
 // BeforeAll(async function () {
