@@ -81,3 +81,8 @@ Then(/^I check that (\w+) in the url$/, async (goodName) => {
 When(/^I press Enter button$/, async () => {
   await browser.keys('Enter')
 })
+
+
+When(/^I click on the discounted goods button on the main page$/, async () => {
+  await MainPage.clickOnDiscountedGoodsButton()
+})

@@ -40,3 +40,8 @@ Scenario: As a user, I want to navigate to empty shopping cart
   When I click on the shoppingCartButton on the header page
   Then I check that I am on the order page
   Then I should see emptyBasketScreen on the order page
+@6
+Scenario: As a user, I want to see dicounted goods
+  When I click on the discounted goods button on the main page
+  Then I should see dicountedGoods on the main page
+  
