@@ -44,4 +44,8 @@ Scenario: As a user, I want to navigate to empty shopping cart
 Scenario: As a user, I want to see dicounted goods
   When I click on the discounted goods button on the main page
   Then I should see dicountedGoods on the main page
-  
+@7
+Scenario: As a user, I want navigate to the special offers page
+  When I click on the bonusProgrammButton on the header page
+  Then I check that I am on the specialoffers page
+  Then And check that buySomethingButton has red color

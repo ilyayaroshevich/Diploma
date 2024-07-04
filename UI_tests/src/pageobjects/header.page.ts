@@ -8,7 +8,8 @@ class HeaderPage extends BasePage {
   allActionsButton: any
   goodCatalogButton: any
   searchField: any
-  shoppingCartButton: any;
+  shoppingCartButton: any
+  bonusProgrammButton: any
   constructor() {
     super()
     this.accountButton = $("[class='styles_userToolsToggler__c2aHe']")
@@ -18,6 +19,9 @@ class HeaderPage extends BasePage {
     this.goodCatalogButton = $("[class='styles_catalogButton__z9L_j']")
     this.searchField = $("[id='catalogSearch']")
     this.shoppingCartButton = $("[class='headerCartBox headerCartBoxEmpty']")
+    this.bonusProgrammButton = $(
+      "a[href='/special_offers/bonus.html'][class='styles_navMenuLink__w1crD']",
+    )
   }
 
   public open() {

@@ -10,12 +10,14 @@ import BasePage from '../pageobjects/base.page.js'
 import ElectronicsPage from '../pageobjects/electronics.page.js'
 import SearchPage from '../pageobjects/search.page.js'
 import OrderPage from '../pageobjects/order.page.js'
+import SpecialoffersPage from '../pageobjects/specialOffers.page.js'
 import {
   clickOnButton,
   elementIsDisplayed,
   getTextIsEqual,
   setValue,
 } from '../consts/commonFunctions.js'
+import specialOffersPage from '../pageobjects/specialOffers.page.js'
 const basePage = new BasePage()
 
 const pages = {
@@ -26,12 +28,9 @@ const pages = {
   promo: PromoPage,
   electronics: ElectronicsPage,
   search: SearchPage,
-  order: OrderPage
+  order: OrderPage,
+  specialoffers: SpecialoffersPage
 }
-
-// BeforeAll(async function () {
-//   await basePage.maximizeWindow()
-// })
 
 Given(/^I am on the (\w+) page$/, async (page) => {
   await pages[page].open()
@@ -85,4 +84,9 @@ When(/^I press Enter button$/, async () => {
 
 When(/^I click on the discounted goods button on the main page$/, async () => {
   await MainPage.clickOnDiscountedGoodsButton()
+})
+
+Then(/^And check that buySomethingButton has red color$/, async () => {
+  const colorOfBuySmthButton = await specialOffersPage.getCssPropertybuySomethingButton();
+  expect(colorOfBuySmthButton.value).toMatch('rgba(234, 22, 83, 1)')
 })
