@@ -17,7 +17,7 @@ import {
   clickOnButton,
   elementIsDisplayed,
   getTextIsEqual,
-  setValue,
+  assertCssProperty,
 } from '../consts/commonFunctions.js'
 const basePage = new BasePage()
 const pages = {
@@ -58,4 +58,16 @@ Then(/^I check that I am on the (\w+) page$/, async (pageName) => {
   const page = pages[pageName]
   const currentUrl = await page.getUrl()
   expect(currentUrl).toEqual(page.url)
+})
+
+Then(/^And check that (\w+) has (.+) on the (\w+) page$/, async (buttonName, color, pageName) => {
+  const page = pages[pageName]
+  const buttonElement = page && page[buttonName]
+  await assertCssProperty(buttonElement, 'background', color)
+})
+
+Then(/^Check that (\w+) has (.+) text on the (\w+) page$/, async (elementName, text, pageName) => {
+  const page = pages[pageName]
+  const element = page && page[elementName]
+  await getTextIsEqual(element, text)
 })

@@ -10,9 +10,6 @@ class SpecialoffersPage extends BasePage {
     this.buySomethingButton = $("[class='g-buybtn']")
   }
 
-  async getCssPropertybuySomethingButton() {
-    return await this.buySomethingButton.getCSSProperty('background')
-  }
 }
 
 export default new SpecialoffersPage()

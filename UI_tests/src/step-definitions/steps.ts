@@ -1,6 +1,6 @@
 import { Given, When, Then, BeforeAll } from '@wdio/cucumber-framework'
 import { expect, $ } from '@wdio/globals'
-
+import './commonSteps.ts'
 import MainPage from '../pageobjects/main.page.js'
 import LoginPage from '../pageobjects/login.page.js'
 import HeaderPage from '../pageobjects/header.page.js'
@@ -18,9 +18,11 @@ import {
   elementIsDisplayed,
   getTextIsEqual,
   setValue,
+  assertCssProperty,
 } from '../consts/commonFunctions.js'
 import * as consts from '../consts/consts.js'
 const basePage = new BasePage()
+
 const pages = {
   main: MainPage,
   login: LoginPage,
@@ -61,24 +63,4 @@ When(/^I click on the discounted goods button on the main page$/, async () => {
   await MainPage.clickOnDiscountedGoodsButton()
 })
 
-Then(/^And check that buySomethingButton has red color$/, async () => {
-  const colorOfBuySmthButton = await SpecialoffersPage.getCssPropertybuySomethingButton()
-  expect(colorOfBuySmthButton.value).toMatch(consts.redColor)
-})
 
-Then(/^And check that there is contact text$/, async () => {
-  await getTextIsEqual(ContactsPage.contactTitle, consts.contacText)
-})
-
-Then(/^And check that writeUsButton has blue color$/, async () => {
-  const colorOfWriteUsButton = await ContactsPage.getCssPropertywriteUsButton()
-  expect(colorOfWriteUsButton.value).toMatch(consts.blueColor)
-})
-
-Then(/^And check that there is recommends text$/, async () => {
-  await getTextIsEqual(RecommendsPage.recommends, consts.recommendsText)
-})
-
-Then(/^And that there is reviews text$/, async () => {
-  await getTextIsEqual(MainPage.reviews, consts.reviewsText)
-})

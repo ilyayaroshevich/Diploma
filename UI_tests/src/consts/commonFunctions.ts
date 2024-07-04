@@ -1,4 +1,5 @@
 import { expect, browser } from '@wdio/globals'
+
 export async function setValue(inputElement: WebdriverIO.Element, value: string): Promise<void> {
     await inputElement.waitForDisplayed({ timeout: 5000 })
     await inputElement.setValue(value)
@@ -43,4 +44,13 @@ export async function getTextIsEqual(
       timeout: 5000,
     },
   )
+}
+
+export async function assertCssProperty(
+  element: WebdriverIO.Element,
+  cssProperty: string,
+  expectedValue: string,
+) {
+  const cssValue = await element.getCSSProperty(cssProperty)
+  expect(cssValue.value).toMatch(expectedValue)
 }
