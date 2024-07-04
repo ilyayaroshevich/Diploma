@@ -11,13 +11,14 @@ import ElectronicsPage from '../pageobjects/electronics.page.js'
 import SearchPage from '../pageobjects/search.page.js'
 import OrderPage from '../pageobjects/order.page.js'
 import SpecialoffersPage from '../pageobjects/specialOffers.page.js'
+import ContactsPage from '../pageobjects/contacts.page.js'
 import {
   clickOnButton,
   elementIsDisplayed,
   getTextIsEqual,
   setValue,
 } from '../consts/commonFunctions.js'
-import specialOffersPage from '../pageobjects/specialOffers.page.js'
+
 const basePage = new BasePage()
 
 const pages = {
@@ -29,7 +30,8 @@ const pages = {
   electronics: ElectronicsPage,
   search: SearchPage,
   order: OrderPage,
-  specialoffers: SpecialoffersPage
+  specialoffers: SpecialoffersPage,
+  contacts: ContactsPage
 }
 
 Given(/^I am on the (\w+) page$/, async (page) => {
@@ -81,12 +83,20 @@ When(/^I press Enter button$/, async () => {
   await browser.keys('Enter')
 })
 
-
 When(/^I click on the discounted goods button on the main page$/, async () => {
   await MainPage.clickOnDiscountedGoodsButton()
 })
 
 Then(/^And check that buySomethingButton has red color$/, async () => {
-  const colorOfBuySmthButton = await specialOffersPage.getCssPropertybuySomethingButton();
+  const colorOfBuySmthButton = await SpecialoffersPage.getCssPropertybuySomethingButton();
   expect(colorOfBuySmthButton.value).toMatch('rgba(234, 22, 83, 1)')
+})
+
+Then(/^And check that there is contact text$/, async () => {
+  await getTextIsEqual(ContactsPage.contactTitle,'Контакты')
+})
+
+Then(/^And check that writeUsButton has blue color$/, async () => {
+  const colorOfBuySmthButton = await ContactsPage.getCssPropertywriteUsButton()
+  expect(colorOfBuySmthButton.value).toMatch('rgba(0, 114, 188, 1)')
 })
