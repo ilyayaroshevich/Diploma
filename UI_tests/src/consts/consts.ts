@@ -1,0 +1,5 @@
+export const redColor: string = 'rgba(234, 22, 83, 1)'
+export const blueColor: string = 'rgba(0, 114, 188, 1)'
+export const contacText: string = 'Контакты'
+export const recommendsText: string = 'Рекомендуемые товары'
+export const reviewsText: string = 'Обзоры'

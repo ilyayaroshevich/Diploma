@@ -61,3 +61,8 @@ Scenario: As a user, I want navigate to the recommends page
     When I click on the watchAllButton on the main page
     Then I check that I am on the recommends page
     Then And check that there is recommends text
+@10
+Scenario: As a user, I want check that reviews are displaying
+    When I check that I am on the main page
+    Then I should see reviewsContainer on the main page
+    Then And check that there is reviews text
