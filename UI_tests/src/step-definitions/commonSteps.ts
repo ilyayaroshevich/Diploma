@@ -1,4 +1,4 @@
-import { Given, When, Then, BeforeAll } from '@wdio/cucumber-framework'
+import { Given, When, Then } from '@wdio/cucumber-framework'
 import { expect, $ } from '@wdio/globals'
 
 import MainPage from '../pageobjects/main.page.js'
@@ -42,17 +42,23 @@ Given(/^I accepte Cookies$/, async () => {
   await clickOnButton(CookiesPage.acceptCookieButton)
 })
 
-When(/^I click on the (\w+) on the (\w+) page$/, async (buttonName, pageName) => {
-  const page = pages[pageName]
-  const buttonElement = page && page[buttonName]
-  await clickOnButton(buttonElement)
-})
+When(
+  /^I click on the (\w+) (button|link|field) on the (\w+) page$/,
+  async (buttonName, clickedElement, pageName) => {
+    const page = pages[pageName]
+    const buttonElement = page && page[buttonName]
+    await clickOnButton(buttonElement)
+  },
+)
 
-Then(/^I should see (\w+) on the (\w+) page$/, async (elementName, pageName) => {
-  const page = pages[pageName]
-  const element = page && page[elementName]
-  await elementIsDisplayed(await element, true)
-})
+Then(
+  /^I should see (\w+) (window|popup|modal|screen|carousel) on the (\w+) page$/,
+  async (elementName, elementType, pageName) => {
+    const page = pages[pageName]
+    const element = page && page[elementName]
+    await elementIsDisplayed(await element, true)
+  },
+)
 
 Then(/^I check that I am on the (\w+) page$/, async (pageName) => {
   const page = pages[pageName]
@@ -60,14 +66,20 @@ Then(/^I check that I am on the (\w+) page$/, async (pageName) => {
   expect(currentUrl).toEqual(page.url)
 })
 
-Then(/^And check that (\w+) has (.+) on the (\w+) page$/, async (buttonName, color, pageName) => {
-  const page = pages[pageName]
-  const buttonElement = page && page[buttonName]
-  await assertCssProperty(buttonElement, 'background', color)
-})
+Then(
+  /^And check that (\w+) button has (.+) on the (\w+) page$/,
+  async (buttonName, color, pageName) => {
+    const page = pages[pageName]
+    const buttonElement = page && page[buttonName]
+    await assertCssProperty(buttonElement, 'background', color)
+  },
+)
 
-Then(/^Check that (\w+) has (.+) text on the (\w+) page$/, async (elementName, text, pageName) => {
-  const page = pages[pageName]
-  const element = page && page[elementName]
-  await getTextIsEqual(element, text)
-})
+Then(
+  /^Check that (\w+) (header|title) has (.+) text on the (\w+) page$/,
+  async (elementName, elementType, text, pageName) => {
+    const page = pages[pageName]
+    const element = page && page[elementName]
+    await getTextIsEqual(element, text)
+  },
+)

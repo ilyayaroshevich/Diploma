@@ -2,15 +2,15 @@ import { $ } from '@wdio/globals'
 import BasePage from './base.page.ts'
 
 class LoginPage extends BasePage {
-  loginPopup: any
-  loginButton: any
+  loginP: any
+  login: any
   emailfield: any
   passwordField: any
   errorMessage: any
   constructor() {
     super()
-    this.loginPopup = $("[data-testid='modal']")
-    this.loginButton = $("[data-testid='loginSubmit']")
+    this.loginP = $("[data-testid='modal']")
+    this.login = $("[data-testid='loginSubmit']")
     this.emailfield = $("[data-testid='login-form-email']")
     this.passwordField = $("[data-testid='login-form-password']")
     this.errorMessage = $("[class$='__LEN7M']")

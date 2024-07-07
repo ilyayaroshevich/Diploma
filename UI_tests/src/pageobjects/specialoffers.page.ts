@@ -3,13 +3,12 @@ import BasePage from './base.page.ts'
 
 class SpecialoffersPage extends BasePage {
   url: any
-  buySomethingButton: any
+  buySomething: any
   constructor() {
     super()
     this.url = 'https://www.21vek.by/special_offers/bonus.html'
-    this.buySomethingButton = $("[class='g-buybtn']")
+    this.buySomething = $("[class='g-buybtn']")
   }
-
 }
 
 export default new SpecialoffersPage()

@@ -47,10 +47,10 @@ Then(/^I check that (.+) is correct$/, async (error) => {
 })
 
 When(/^I enter (.+) in the search field$/, async (nameOfGood) => {
-  await setValue(HeaderPage.searchField, nameOfGood)
+  await setValue(HeaderPage.search, nameOfGood)
 })
 
-Then(/^I check that (\w+) in the url$/, async () => {
+Then(/^I check that (\w+) in the url$/, async (nameOfGood) => {
   const currentUrl = await basePage.getUrl()
   expect(currentUrl).toMatch(SearchPage.url)
 })
