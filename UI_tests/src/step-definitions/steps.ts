@@ -1,6 +1,6 @@
 import { Given, When, Then, BeforeAll } from '@wdio/cucumber-framework'
 import { expect, $ } from '@wdio/globals'
-import './commonSteps.ts'
+import './utilitySteps.ts'
 import MainPage from '../pageobjects/main.page.js'
 import LoginPage from '../pageobjects/login.page.js'
 import HeaderPage from '../pageobjects/header.page.js'
@@ -14,13 +14,8 @@ import SpecialoffersPage from '../pageobjects/specialOffers.page.js'
 import ContactsPage from '../pageobjects/contacts.page.js'
 import RecommendsPage from '../pageobjects/recommends.page.js'
 import {
-  clickOnButton,
-  elementIsDisplayed,
-  getTextIsEqual,
   setValue,
-  assertCssProperty,
 } from '../consts/commonFunctions.js'
-import * as consts from '../consts/consts.js'
 const basePage = new BasePage()
 
 const pages = {
