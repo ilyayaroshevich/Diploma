@@ -1,5 +1,5 @@
-import { Given, When, Then, BeforeAll } from '@wdio/cucumber-framework'
-import { expect, $ } from '@wdio/globals'
+import { When, Then } from '@wdio/cucumber-framework'
+import { expect } from '@wdio/globals'
 import './utilitySteps.ts'
 import MainPage from '../pageobjects/main.page.js'
 import LoginPage from '../pageobjects/login.page.js'
@@ -16,7 +16,21 @@ import RecommendsPage from '../pageobjects/recommends.page.js'
 import {
   setValue,
 } from '../consts/commonFunctions.js'
+// import { PageFactory } from '../pageobjects/pageFactory.ts'
 const basePage = new BasePage()
+
+// const MainPage = PageFactory.getPage(browser, "MainPage")
+// const LoginPage = PageFactory.getPage(browser, "LoginPage")
+// const HeaderPage = PageFactory.getPage(browser, "HeaderPage")
+// const CookiesPage = PageFactory.getPage(browser, "CookiesPage")
+// const PromoPage = PageFactory.getPage(browser, "PromoPage")
+// const ElectronicsPage = PageFactory.getPage(browser, "ElectronicsPage")
+// const SearchPage = PageFactory.getPage(browser, "SearchPage")
+// const OrderPage = PageFactory.getPage(browser, "OrderPage")
+// const SpecialoffersPage = PageFactory.getPage(browser, "SpecialoffersPage")
+// const ContactsPage = PageFactory.getPage(browser, "ContactsPage")
+// const RecommendsPage = PageFactory.getPage(browser, "RecommendsPage")
+
 
 const pages = {
   main: MainPage,
