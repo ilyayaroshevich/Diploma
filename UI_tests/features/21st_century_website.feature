@@ -15,7 +15,7 @@ Feature: 21 century website
         Examples:
             | email              | password   | error                |
             | test@test.com      | test12345  | Неправильный пароль. |
-            | test-test@test.com | test!12345 | Неправильный пароль. |
+            | test@test.com      | test1      | Неправильный пароль. |
     @2
     Scenario: As a user, I want to navigate to promo page
         When I click on the allActions button on the header page
